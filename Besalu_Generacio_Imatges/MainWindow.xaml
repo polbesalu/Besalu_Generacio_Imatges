@@ -1,0 +1,18 @@
+﻿<Window x:Class="Besalu_Generacio_Imatges.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Besalu_Generacio_Imatges"
+        mc:Ignorable="d"
+        Title="Generacio Imatges" Height="450" Width="800">
+    <DockPanel>
+        <Button Name="btnGeneraImg" Click="btnGeneraImg_Click" DockPanel.Dock="Top">Genera Imatge</Button>
+        <Button Name="btnCarregaImg" Click="btnCarregaImg_Click" DockPanel.Dock="Top">Carrega Imatge</Button>
+        <Button Name="btnGeneraLinies" Click="btnGeneraLinies_Click" DockPanel.Dock="Top">Genera Linies</Button>
+        <Button Name="btnGeneraQuadricula" Click="btnGeneraQuadricula_Click" DockPanel.Dock="Top">GeneraQuadricula</Button>
+        <Button Name="btnGeneraImatgeXifrat" Click="btnGeneraImatgeXifrat_Click" DockPanel.Dock="Top">Generar Imatge Xifrada</Button>
+        <Button Name="btnDesxifrarMssg" Click="btnDesxifrarMssg_Click" DockPanel.Dock="Top">Desxifrar missatge</Button>
+        <Image Name="img"></Image>
+    </DockPanel>
+</Window>
