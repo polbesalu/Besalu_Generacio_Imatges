@@ -163,10 +163,36 @@ namespace Besalu_Generacio_Imatges
 
         private void btnDesxifrarMssg_Click(object sender, RoutedEventArgs e)
         {
-            MyImage imagen = new MyImage(new BitmapImage(new Uri("missatgeOcult.bmp")));
 
-            byte[] bytesPixel = imagen.getPixel(0, 0);
-            int[] bitsPrimerByte = imagen.num2bits(bytesPixel[0]);
+            string rutaImagen = "C:\\Users\\pol.besalu\\Downloads\\missatgeOcult.bmp";
+
+            MyImage imagen = new MyImage(new BitmapImage(new Uri(rutaImagen)));
+
+            for (int i = 0; i < imagen.GetWidth(); i++)
+            {
+                for (int j = 0; j < imagen.GetHeight(); j++)
+                {
+                    byte[] bytesPerPixel = imagen.getPixel(i, j);
+                    int[] bitsFirstByte = imagen.num2bits(bytesPerPixel[0]);
+                    int[] bitsSecondByte = imagen.num2bits(bytesPerPixel[1]);
+                    int[] bitsThirdByte = imagen.num2bits(bytesPerPixel[2]);
+
+                    var bitsOcults = new int[8];
+
+                    bitsOcults[0] = bitsThirdByte[3];
+                    bitsOcults[1] = bitsSecondByte[0];
+                    bitsOcults[2] = bitsSecondByte[1];
+                    bitsOcults[3] = bitsFirstByte[4];
+                    bitsOcults[4] = bitsSecondByte[2];
+                    bitsOcults[5] = bitsFirstByte[2];
+                    bitsOcults[6] = bitsFirstByte[1];
+                    bitsOcults[7] = bitsFirstByte[3];
+
+                    byte mensajeDesencriptado = imagen.bits2num(bitsOcults);
+
+                    tbFraseDesencriptada.Text = tbFraseDesencriptada.Text + ((char)mensajeDesencriptado).ToString();
+                }
+            }
         }
     }
 }

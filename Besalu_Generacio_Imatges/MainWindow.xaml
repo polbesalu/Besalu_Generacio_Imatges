@@ -14,5 +14,6 @@
         <Button Name="btnGeneraImatgeXifrat" Click="btnGeneraImatgeXifrat_Click" DockPanel.Dock="Top">Generar Imatge Xifrada</Button>
         <Button Name="btnDesxifrarMssg" Click="btnDesxifrarMssg_Click" DockPanel.Dock="Top">Desxifrar missatge</Button>
         <Image Name="img"></Image>
+        <TextBlock Name="tbFraseDesencriptada" Text="" DockPanel.Dock="Bottom"/>
     </DockPanel>
 </Window>

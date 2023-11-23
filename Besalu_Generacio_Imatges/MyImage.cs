@@ -33,32 +33,42 @@ namespace Besalu_Generacio_Imatges
         {
             //Obtenir una imatge de disc
 
-            if (imatgeOriginal.Format.BitsPerPixel == PixelFormats.Bgra32.BitsPerPixel)
+            if (imatgeOriginal.Format.BitsPerPixel != PixelFormats.Bgra32.BitsPerPixel)
             {
                 throw new Exception("Error no podem treballar amb rgba32");
             }
             bytesPerPixel = imatgeOriginal.Format.BitsPerPixel / 8;
             this.width = imatgeOriginal.PixelWidth;
             this.height= imatgeOriginal.PixelHeight;
+            pixels = new byte[width * height * bytesPerPixel];
             imatgeOriginal.CopyPixels(this.pixels, width * bytesPerPixel, 0);
         }
 
-        public int[] num2bits(int num)
+        public int[] num2bits(byte num)
         {
-            int[] bits = new int[0];
+            int[] bits = new int[8];
             int i = 7;
 
-            while(num >= 1)
+            while(i >= 0)
             {
                 bits[i] = num % 2;
                 num /= 2;
                 i--;
             }
 
-            while (i >= 0)
-                bits[i] = 0;
-
             return bits;
+        }
+
+        public byte bits2num(int[] bits)
+        {
+            int result = 0;
+
+            for (int i = 0; i < bits.Length; i++)
+            {
+                result = (result << 1) | bits[i];
+            }
+
+            return (byte)result;
         }
 
         public byte[] getPixel(int x, int y)
